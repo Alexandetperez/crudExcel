@@ -1,6 +1,6 @@
 from datetime import datetime
 from openpyxl import load_workbook
-rut=r'PYTHON-EXCEL\DatosCrud.xlsx'
+rut=r'DatosCrud.xlsx'
 
 def leer(ruta:str, extraer:str):
  Archivo_Excel=load_workbook(ruta)
@@ -35,7 +35,7 @@ def actualizar(ruta:str,identificador:int,datos_actualizados:dict):
   Archivo_Excel=load_workbook(ruta)
   Hoja_datos=Archivo_Excel['Datos del crud']
   Hoja_datos=Hoja_datos['A2' : 'F'+str(Hoja_datos.max_row)]
-  hoja=Archivo_Excel.active
+  hoja=Archivo_Excel.active3
 
   titulo=2
   descripcion=3
@@ -82,9 +82,9 @@ def agregar(ruta:int, datos:dict):
          hoja.cell(row=identificador,column=1).value=identificador-1
          hoja.cell(row=identificador,column=titulo).value=datos['titulo']
          hoja.cell(row=identificador,column=descripcion).value=datos['descripcion']
-         hoja.cell(row=identificador,column=estado).value=datos['Estados']
-         hoja.cell(row=identificador,column=fecha_inicio).value=['fecha_inicio']
-         hoja.cell(row=identificador,column=fecha_de_finalizacion).value=['fecha_de_finalizacion']
+         hoja.cell(row=identificador,column=estado).value=datos['estado']
+         hoja.cell(row=identificador,column=fecha_inicio).value=datos['fecha inicio']
+         hoja.cell(row=identificador,column=fecha_de_finalizacion).value=datos['fecha finalizado']
          break
   Archivo_Excel.save(ruta)
   return
